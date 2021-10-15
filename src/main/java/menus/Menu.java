@@ -1,6 +1,7 @@
 package menus;
 
 import utilities.Flight;
+import utilities.WeatherConditions;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
