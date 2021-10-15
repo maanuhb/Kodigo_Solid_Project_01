@@ -1,6 +1,6 @@
-package airportClass;
+package utilities;
 
-import aircraftsClass.Aircrafts;
+import utilities.Aircrafts;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Airport {
