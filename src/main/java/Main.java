@@ -1,5 +1,6 @@
 import menus.Menu;
 import menus.MenuFlight;
+import reports.ExcelReport;
 import utilities.Flight;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Main {
 
         int op =0;
         do{
-
+            ExcelReport excel = new ExcelReport();
             Menu.printMainMenu();
             System.out.println(ANSI_BLUE + "Enter a number to select one of the menu options");
             op = sc.nextInt();
@@ -29,6 +30,7 @@ public class Main {
                 case 2:
                     break;
                 case 3:
+                    excel.createAndSaveExcel();
                     break;
                 case 4:
                     break;
