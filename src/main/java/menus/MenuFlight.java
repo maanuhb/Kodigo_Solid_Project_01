@@ -1,6 +1,7 @@
 package menus;
 
 
+import helpers.RequestInfo;
 import utilities.Flight;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class MenuFlight {
                 break;
             case 3: RequestInfo.requestChangeState(flightList);
                 break;
-            case 4: RequestInfo.requestCancelFlight(flightList);
+            case 4:
+                System.out.println("ELIMINADA");
                 break;
             case 5:
                 break;

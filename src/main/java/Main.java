@@ -1,10 +1,15 @@
+import menus.Menu;
+import menus.MenuFlight;
+import utilities.Flight;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         final String ANSI_BLUE = "\u001B[34m";
-        final List<Flight> flightList = FlightList.getFlightList();
+        final List<Flight> flightList = new ArrayList<>();
         final Scanner sc = new Scanner(System.in);
 
         int op =0;

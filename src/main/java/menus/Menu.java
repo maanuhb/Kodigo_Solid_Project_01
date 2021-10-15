@@ -1,6 +1,7 @@
 package menus;
 
 import utilities.Flight;
+import utilities.WeatherConditions;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -45,8 +46,6 @@ public class Menu {
         System.out.printf(TAB,"", "2", "Agregar Vuelo");
         System.out.printf(spaces, LINE);
         System.out.printf(TAB,"", "3", "Actualizar estado de vuelos");
-        System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "4", "Cancelar Vuelos");
         System.out.printf(spaces, LINE);
         System.out.printf(TAB,"", "0", "Regresar al menu anterior");
         System.out.printf(spaces, LINE);
