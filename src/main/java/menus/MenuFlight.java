@@ -25,7 +25,7 @@ public class MenuFlight {
             case 3: RequestInfo.requestChangeState(flightList);
                 break;
             case 4:
-                System.out.println("ELIMINADA");
+                System.out.println("Deleated");
                 break;
             case 5:
                 break;

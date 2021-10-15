@@ -1,8 +1,8 @@
 package utilities;
-import Interfaces.IAircrafts.IModel;
-import Interfaces.IAircrafts.IPc;
-import Interfaces.IAircrafts.IRf;
-import Interfaces.IAircrafts.IType;
+import Interfaces.iAircrafts.IModel;
+import Interfaces.iAircrafts.IPc;
+import Interfaces.iAircrafts.IRf;
+import Interfaces.iAircrafts.IType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

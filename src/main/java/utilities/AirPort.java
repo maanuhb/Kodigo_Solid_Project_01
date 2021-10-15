@@ -1,17 +1,17 @@
 package utilities;
-import Interfaces.IAirport.*;
+import Interfaces.iAirport.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import utilities.Aircrafts;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AirPort implements ICountry, ICity, IAirportName, IWeatherConditions, IAircraftsCatalog {
-    private String country = "";
-    private String city = "";
+public class AirPort implements IAirportName, IWeatherConditions, IAircraftsCatalog, IDestination, IOrigin {
+    private String destination = "";
+    private String origin = "";
     private String airportname = "";
     private String weatherconditions = "";
     private Scanner sc = new Scanner(System.in);
@@ -19,16 +19,16 @@ public class AirPort implements ICountry, ICity, IAirportName, IWeatherCondition
     private ArrayList<String> aircraftscatalog = new ArrayList<String>();
 
 @Override
-    public void country() {
-        System.out.println("Type the country: ");
-        country = sc.nextLine();
-        System.out.println("your country is: " + country);
+    public void destination() {
+        System.out.println("Type the destination: ");
+        destination = sc.nextLine();
+        System.out.println("your destiantion is: " + destination);
     }
 @Override
-    public void city() {
-        System.out.println("Type the city: ");
-        city = sc.nextLine();
-        System.out.println("your city is: " + city);
+    public void origin() {
+        System.out.println("Type the origin: ");
+        origin = sc.nextLine();
+        System.out.println("your origin is: " + origin);
     }
 @Override
     public void airportname() {
@@ -37,11 +37,12 @@ public class AirPort implements ICountry, ICity, IAirportName, IWeatherCondition
         System.out.println("your airport is: " + airportname);
     }
 @Override
-    public void weatherconditions() {
+    public String weatherconditions() {
         System.out.println("Type the weather conditions: ");
-        country = sc.nextLine();
+        weatherconditions = sc.nextLine();
         System.out.println("your weather conditions are: " + weatherconditions);
-    }
+    return null;
+}
 @Override
     public void aircraftscatalog() {
         aircraftscatalog.add(model.getModel());

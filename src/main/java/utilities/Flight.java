@@ -1,8 +1,8 @@
 package utilities;
 
-import interfaces.IEnterFlight;
-import interfaces.IUpdateFlight;
-import interfaces.IUpdateState;
+import Interfaces.iFlight.IEnterFlight;
+import Interfaces.iFlight.IUpdateFlight;
+import Interfaces.iFlight.IUpdateState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +18,8 @@ public class Flight implements IUpdateFlight, IEnterFlight, IUpdateState {
     private String airline;
     private String Status;
     private String reasonToCancel;
-    private AirPort destination;
-    private AirPort origin;
+    private String destination;
+    private String origin;
     private Date departureDateTime;
     private Date arrivalDateTime;
     private WeatherConditions weatherConditions;

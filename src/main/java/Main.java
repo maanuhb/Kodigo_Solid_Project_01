@@ -14,18 +14,30 @@ public class Main {
 
         int op =0;
         do{
+
             Menu.printMainMenu();
-            System.out.println(ANSI_BLUE + "Ingrese un numero para seleccionar una de las opciones del menu");
+            System.out.println(ANSI_BLUE + "Enter a number to select one of the menu options");
             op = sc.nextInt();
             switch(op){
                 case 1: do{
                     Menu.printFlightMenu();
-                    System.out.println("Ingrese una opcion");
+                    System.out.println("Enter an option");
                     op = sc.nextInt();
                     MenuFlight.viewFlightLoop(op, flightList);
                 }while(op!=0);
                     break;
                 case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+
+                    System.out.println("Bye!");
+                    break;
+                default:
+                    System.out.println("Error, please type a valid option...");
                     break;
             }
         }while(op != 5);

@@ -1,13 +1,16 @@
 package utilities;
 
-public class WeatherConditions {
-    private static int temperature;
-    private static String[] weather = {"sunny", "light rain", "Cloudy", "Foggy",
+import Interfaces.iAirport.IWeatherConditions;
+
+public class WeatherConditions implements IWeatherConditions {
+    private int temperature;
+    private String[] weather = {"sunny", "light rain", "Cloudy", "Foggy",
             "heavy rain", "thunderstorm", "Windy"};
-    private static String[] windDirection = new String[]{"North wind", "Northeast wind", "East wind", "Southeastern wind",
+    private String[] windDirection = new String[]{"North wind", "Northeast wind", "East wind", "Southeastern wind",
             "South wind", "Southwest wind", "West wind", "Northwest wind"};
 
-    public static String getWeatherCondition() {
+    @Override
+    public String weatherconditions() {
         String weatherConditions;
         int index = (int) (Math.random() * weather.length);
         switch (weather[index]) {

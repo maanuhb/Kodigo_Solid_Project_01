@@ -1,4 +1,4 @@
-package interfaces;
+package Interfaces.iFlight;
 
 import utilities.Flight;
 

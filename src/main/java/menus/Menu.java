@@ -20,17 +20,17 @@ public class Menu {
         System.out.println(ANSI_BLUE );
         String spaces = " %100s\n";
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB_HEADER, " ", "****Menu Principal****");
+        System.out.printf(TAB_HEADER, " ", "****Principal Menu****");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "1", "Administrar Vuelos");
+        System.out.printf(TAB,"", "1", "Manage Flights");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "2", "Ver Catalogo de Aviones permitidos");
+        System.out.printf(TAB,"", "2", "See Catalog of Allowed Aircraft");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "3", "Generar reportes");
+        System.out.printf(TAB,"", "3", "Generate reports");
         System.out.printf(spaces, LINE);
         System.out.printf(TAB,"", "4", "Enviar Reporte por correo");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "5", "Salir");
+        System.out.printf(TAB,"", "5", "Leave");
         System.out.printf(spaces, LINE);
     }
 
@@ -39,15 +39,15 @@ public class Menu {
         System.out.println(ANSI_BLUE );
         String spaces = " %100s\n";
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB_HEADER, " ", "****Menu Vuelos****");
+        System.out.printf(TAB_HEADER, " ", "****Flights Menu****");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "1", "Ver Lista de Vuelos");
+        System.out.printf(TAB,"", "1", "See Flight List");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "2", "Agregar Vuelo");
+        System.out.printf(TAB,"", "2", "Add Flight");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "3", "Actualizar estado de vuelos");
+        System.out.printf(TAB,"", "3", "Update flight status");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "0", "Regresar al menu anterior");
+        System.out.printf(TAB,"", "0", "Return to the previous menu");
         System.out.printf(spaces, LINE);
     }
 
@@ -57,16 +57,19 @@ public class Menu {
 
     //Method that will print the flights, it can go to an interface
     public static void printObjectList(List<Flight> flightList){
+        WeatherConditions w= new WeatherConditions();
+
         System.out.printf(separatorLine + "\n");
         System.out.printf( headerTab, " Code", "     Airline", "   Aircraft", " Country/City Origin", "    Hour/Date",
                 " Country/City Destination", "   Hour/Date", " Status", "Weather Conditions");
         System.out.println(separatorLine);
         for(Flight f : flightList){
             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-            System.out.printf(headerTab, f.getFlightNumber(), "NO APLICA NAVE", f.getAirline(), f.getOrigin().getCountry(),
-                    hourdateFormat.format(f.getDepartureDateTime()), f.getDestination().getCountry(),
-                    hourdateFormat.format(f.getArrivalDateTime()), f.getStatus(), WeatherConditions.getWeatherCondition());
+            System.out.printf(headerTab, f.getFlightNumber(), f.getAirline(), "NO APLICA NAVE", f.getOrigin(),
+                    hourdateFormat.format(f.getDepartureDateTime()), f.getDestination(),
+                    hourdateFormat.format(f.getArrivalDateTime()), f.getStatus(), w.weatherconditions());
         }
         System.out.printf(separatorLine + "\n");
     }
+
 }

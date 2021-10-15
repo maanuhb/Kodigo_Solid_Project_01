@@ -16,31 +16,31 @@ public class RequestInfo {
     public static Flight requestFlight(List<Flight> flightList){
         Flight f = new Flight();
         f.setFlightNumber(flightList.size());
-        System.out.println("Ingrese el nombre de la aerolínea");
+        System.out.println("Type the airline: ");
         f.setAirline(sc.nextLine());
-        for(int i=0; i< flightList.size(); i++){
+        /*for(int i=0; i< flightList.size(); i++){
             System.out.println(i + ". " + flightList.get(i).getOrigin());
-        }
-        System.out.println("Ingrese el origen del vuelo");
-        f.setOrigin(flightList.get(sc.nextInt()).getOrigin());
-
+        }*/
+        System.out.println("Type the origin country: ");
+        f.setOrigin(/*flightList.get(sc.nextInt()).getOrigin()*/sc.nextLine());
+        /*
         for(int i=0; i< flightList.size(); i++){
             System.out.println(i + ". " + flightList.get(i).getDestination());
-        }
-        System.out.println("Ingrese el destino del vuelo");
-        f.setDestination(flightList.get(sc.nextInt()).getDestination());
+        }*/
+        System.out.println("Type the destination country");
+        f.setDestination(/*flightList.get(sc.nextInt()).getDestination()*/sc.nextLine());
 
         f.setStatus("On Time");
 
-        System.out.println("Ingrese la fecha de salida en formato dd/mm/aaaa");
+        System.out.println("Type the departure date on format dd/mm/yyyy");
         DateFormat hourdateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
         String depDate = sc.next();
-        System.out.println("Ingrese la hora de salida en formato hh:mm");
+        System.out.println("Type the departure time on format hh:mm");
         String depHour = sc.next();
 
-        System.out.println("Ingrese la fecha de llegada en formato dd/mm/aaaa");
+        System.out.println("Type the arrival date on format dd/mm/aaaa");
         String arrivalDate = sc.next();
-        System.out.println("Ingrese la hora de salida en formato hh:mm");
+        System.out.println("Type the arrival time on format hh:mm");
         String arrivalHour = sc.next();
         try {
             f.setDepartureDateTime(hourdateFormat.parse(depHour + " " + depDate));
@@ -53,15 +53,15 @@ public class RequestInfo {
 
     //Method to request the user by console what flight will be changed her status
     public static void requestChangeState(List<Flight> flightList){
-        System.out.println("Verifique el cuadro de vuelos para actualizar el estado de algun vuelo");
+        System.out.println("Check the flight chart to update the status of any flight");
         Menu.printObjectList(flightList);
-        System.out.println("Ingrese el codigo de vuelo al que desea actualizar su estado");
+        System.out.println("Enter the flight code to which you want to update your status");
         Flight f = Find.findFlight(sc.nextInt(), flightList);
         sc.nextLine();
-        System.out.println("Ingrese el nuevo estado del vuelo");
+        System.out.println("Enter the new flight status");
         f.setStatus(sc.nextLine());
         if(f.getStatus().equals("Canceled")){
-            System.out.println("Ingrese la razón por la cual cancela el vuelo");
+            System.out.println("Enter the reason for canceling the flight");
             f.setReasonToCancel(sc.nextLine());
         }
     }
