@@ -1,6 +1,17 @@
 package utilities;
+import Interfaces.IAircrafts.IModel;
+import Interfaces.IAircrafts.IPc;
+import Interfaces.IAircrafts.IRf;
+import Interfaces.IAircrafts.IType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Scanner;
-public class Aircrafts {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Aircrafts implements IModel, IType, IPc, IRf {
     String model = "";
     String type = "";
     //pc=passenger capacity
@@ -8,21 +19,25 @@ public class Aircrafts {
     // rf= remaining fuel
     int rf = 0 ;
     Scanner sc = new Scanner(System.in);
+@Override
     public void model() {
         System.out.println("Type the model: ");
         model = sc.nextLine();
         System.out.println("the model is: " + model);
     }
+@Override
     public void type() {
         System.out.println("Type: ");
         model = sc.nextLine();
         System.out.println("the type is: " + model);
     }
+@Override
     public void pc() {
         System.out.println("Type the passenger capacity: ");
         pc = sc.nextInt();
         System.out.println("the passanger capacity is: " + pc);
     }
+@Override
     public void rf() {
         System.out.println("Type the remaining fuel: ");
         rf = sc.nextInt();

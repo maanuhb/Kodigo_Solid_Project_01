@@ -1,2 +1,5 @@
-package Interfaces.IAirport;public interface IWeatherConditions {
+package Interfaces.IAirport;
+
+public interface IWeatherConditions {
+    public void weatherconditions();
 }
