@@ -18,10 +18,11 @@ public class Flight implements IUpdateFlight, IEnterFlight, IUpdateState {
     private String airline;
     private String Status;
     private String reasonToCancel;
-    private Airport destination;
-    private Airport origin;
+    private AirPort destination;
+    private AirPort origin;
     private Date departureDateTime;
     private Date arrivalDateTime;
+    private WeatherConditions weatherConditions;
 
 
     @Override
