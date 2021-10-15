@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         final String ANSI_BLUE = "\u001B[34m";
         final List<Flight> flightList = FlightList.getFlightList();
