@@ -1,2 +1,5 @@
-package Interfaces.IAirport;public interface IAircraftsCatalog {
+package Interfaces.IAirport;
+
+public interface IAircraftsCatalog {
+    public void aircraftscatalog();
 }
