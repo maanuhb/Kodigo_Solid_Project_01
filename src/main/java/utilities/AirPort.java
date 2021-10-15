@@ -1,5 +1,4 @@
 package utilities;
-
 import Interfaces.IAirport.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
