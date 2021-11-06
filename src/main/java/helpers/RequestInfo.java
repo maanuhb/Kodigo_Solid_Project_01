@@ -1,7 +1,7 @@
 package helpers;
 
 import menus.Menu;
-import utilities.Flight;
+import model.Flight;
 
 import java.text.DateFormat;
 import java.text.ParseException;

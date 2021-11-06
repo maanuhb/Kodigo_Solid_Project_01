@@ -1,6 +1,6 @@
 package helpers;
 
-import utilities.Flight;
+import model.Flight;
 
 import java.util.List;
 

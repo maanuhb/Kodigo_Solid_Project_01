@@ -2,7 +2,7 @@ package menus;
 
 
 import helpers.RequestInfo;
-import utilities.Flight;
+import model.Flight;
 
 import java.util.List;
 import java.util.Scanner;

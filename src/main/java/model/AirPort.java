@@ -1,4 +1,4 @@
-package utilities;
+package model;
 import Interfaces.iAirport.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ public class AirPort implements IAirportName, IWeatherConditions, IAircraftsCata
     private String airportname = "";
     private String weatherconditions = "";
     private Scanner sc = new Scanner(System.in);
-    private Aircrafts model= new Aircrafts();
+    private Aircraft model= new Aircraft();
     private ArrayList<String> aircraftscatalog = new ArrayList<String>();
 
 @Override

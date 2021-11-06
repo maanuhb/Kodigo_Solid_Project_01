@@ -1,4 +1,4 @@
-package utilities;
+package model;
 
 import Interfaces.iFlight.IEnterFlight;
 import Interfaces.iFlight.IUpdateFlight;
