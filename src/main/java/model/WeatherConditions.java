@@ -1,4 +1,4 @@
-package utilities;
+package model;
 
 import Interfaces.iAirport.IWeatherConditions;
 

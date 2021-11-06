@@ -1,7 +1,7 @@
 import menus.Menu;
 import menus.MenuFlight;
 import reports.ExcelReport;
-import utilities.Flight;
+import model.Flight;
 
 import java.util.ArrayList;
 import java.util.List;

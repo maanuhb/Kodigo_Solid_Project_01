@@ -1,6 +1,6 @@
 package Interfaces.iFlight;
 
-import utilities.Flight;
+import model.Flight;
 
 import java.util.Date;
 
