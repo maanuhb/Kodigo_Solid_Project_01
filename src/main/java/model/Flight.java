@@ -1,47 +1,20 @@
 package model;
 
-import Interfaces.iFlight.IEnterFlight;
-import Interfaces.iFlight.IUpdateFlight;
-import Interfaces.iFlight.IUpdateState;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Date;
-import java.util.List;
-
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Flight implements IUpdateFlight, IEnterFlight, IUpdateState {
-    private int flightNumber;
-    private String airline;
-    private String Status;
-    private String reasonToCancel;
-    private String destination;
-    private String origin;
-    private Date departureDateTime;
-    private Date arrivalDateTime;
-    private WeatherConditions weatherConditions;
+@RequiredArgsConstructor
+public class Flight{
+    private String Status = "On time";
+    @NonNull private Aircraft aircraft;
+    @NonNull private Airport destination;
+    @NonNull private Airport origin;
+    @NonNull private FlightSchedule schedule;
 
-
-    @Override
-    public void enterFlight(List<Flight> flightList, Flight flight) {
-        flightList.add(flight);
+    public boolean isTheSameFlight(Flight flight2) {
+        return this.getSchedule().getFlightNumber().equals(flight2.getSchedule().getFlightNumber());
     }
 
-    @Override
-    public void updateFlight(Flight flight, Date departureDateTime, Date arrivalDateTime) {
-        if(flight.getStatus().equals("DELAYED")){
-            flight.setDepartureDateTime(departureDateTime);
-            flight.setArrivalDateTime(arrivalDateTime);
-        }else if(flight.getStatus().equals("CANCELED")){
-            //PENDIENTE DE MODIFICAR AQUI CUANDO SE CANCELA UN VUELO
-        }
-    }
-
-    @Override
-    public void updateState(String status) {
-        this.setStatus(status);
-    }
 }
