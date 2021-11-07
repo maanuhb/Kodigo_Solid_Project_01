@@ -9,46 +9,46 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FlightManagement implements IEnterFlight, ICancelable, IUpdatable {
-   private List<Flight> flights;
 
    @Override
-   public void enterFlight(List<Flight> flights, Flight newFlight) {
-      for (Flight flight : flights) {
+   public void enterFlight(Flight newFlight) {
+      for (Flight flight : FlightList.getFlightList()) {
          if (flight.isTheSameFlight(newFlight)) {
             System.out.println("Flight is already registered");
-         } else {
-            flights.add(newFlight);
+            break;
          }
       }
+      FlightList.setFlightList(newFlight);
+      System.out.println("\n----Vuelo agregado exitosamente-----");
    }
 
    @Override
-   public void updateFlight(List<Flight> flights, String flightNumber, Date departureDateTime, Date arrivalDateTime) {
-      changeStatus(flights, flightNumber, "Delayed");
-      changeDateTime(flights, flightNumber, departureDateTime, arrivalDateTime);
+   public void updateFlight(String flightNumber, Date departureDateTime, Date arrivalDateTime) {
+      changeStatus(flightNumber, "Delayed");
+      changeDateTime(flightNumber, departureDateTime, arrivalDateTime);
    }
 
    @Override
-   public String cancelFlight(List<Flight> flights, String flightNumber) {
+   public String cancelFlight(String flightNumber) {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Enter reason for cancellation: ");
       String reason = scanner.nextLine();
-      changeStatus(flights, flightNumber, "Cancelled");
+      changeStatus(flightNumber, "Cancelled");
       scanner.close();
 
       return reason;
    }
 
-   public void changeStatus(List<Flight> flights, String flightNumber, String status) {
-      for (Flight flight : flights) {
+   public void changeStatus(String flightNumber, String status) {
+      for (Flight flight : FlightList.getFlightList()) {
          if (flight.getSchedule().getFlightNumber().equals(flightNumber)) {
             flight.setStatus(status);
          }
       }
    }
 
-   public void changeDateTime(List<Flight> flights, String flightNumber, Date departureDateTime, Date arrivalDateTime) {
-      for (Flight flight : flights) {
+   public void changeDateTime(String flightNumber, Date departureDateTime, Date arrivalDateTime) {
+      for (Flight flight : FlightList.getFlightList()) {
          if (flight.getSchedule().getFlightNumber().equals(flightNumber)) {
             flight.getSchedule().setDepartureDateTime(departureDateTime);
             flight.getSchedule().setArrivalDateTime(arrivalDateTime);

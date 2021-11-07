@@ -9,12 +9,12 @@ import model.Location;
 import java.util.ArrayList;
 @Getter
 @Setter
-public class Airport extends Location {
+public class AirPort extends Location {
     private String AirportName;
     private String AirportCode;
     private ArrayList<Aircraft> catalogOfAircrafts;
 
-    public Airport(@NonNull String CountryName, @NonNull String CountryCode, @NonNull String AirportName, @NonNull String AirportCode) {
+    public AirPort(@NonNull String CountryName, @NonNull String CountryCode, @NonNull String AirportName, @NonNull String AirportCode) {
         super(CountryName, CountryCode);
         this.AirportName = AirportName;
         this.AirportCode = AirportCode;
