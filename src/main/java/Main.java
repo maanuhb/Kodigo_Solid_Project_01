@@ -24,7 +24,7 @@ public class Main {
                     Menu.printFlightMenu();
                     System.out.println("Enter an option");
                     op = sc.nextInt();
-                    MenuFlight.viewFlightLoop(op, flightList);
+                    MenuFlight.viewFlightLoop(op);
                 }while(op!=0);
                     break;
                 case 2:

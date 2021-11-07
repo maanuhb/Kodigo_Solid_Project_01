@@ -5,5 +5,5 @@ import model.Flight;
 import java.util.List;
 
 public interface IEnterFlight {
-    void enterFlight(List<Flight> flightList, Flight flight);
+    void enterFlight(Flight flight);
 }

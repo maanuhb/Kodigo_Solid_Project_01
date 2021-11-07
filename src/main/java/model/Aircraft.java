@@ -1,19 +1,16 @@
 package model;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.apache.xpath.operations.String;
+import lombok.*;
 
-
+@NoArgsConstructor
 @RequiredArgsConstructor
-@Setter @Getter
+@Setter
+@Getter
 public class Aircraft {
     @NonNull
     private String model;
     @NonNull
     private String type;
-    @NonNull
+
     private String airline;
     private int passengerCapacity;
     private int amountOfFuel;

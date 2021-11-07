@@ -1,6 +1,7 @@
 package menus;
 
 import model.Flight;
+import model.FlightList;
 import model.WeatherConditions;
 
 import java.text.DateFormat;
@@ -56,18 +57,18 @@ public class Menu {
             "+------+---------------+------------------+--------------------------------+----------------+--------------------------------+----------------+----------+--------------------------------+";
 
     //Method that will print the flights, it can go to an interface
-    public static void printObjectList(List<Flight> flightList){
+    public static void printObjectList(){
         WeatherConditions w= new WeatherConditions();
 
         System.out.printf(separatorLine + "\n");
         System.out.printf( headerTab, " Code", "     Airline", "   Aircraft", " Country/City Origin", "    Hour/Date",
                 " Country/City Destination", "   Hour/Date", " Status", "Weather Conditions");
         System.out.println(separatorLine);
-        for(Flight f : flightList){
+        for(Flight f : FlightList.getFlightList()){
             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-            System.out.printf(headerTab, f.getFlightNumber(), f.getAirline(), "NO APLICA NAVE", f.getOrigin(),
-                    hourdateFormat.format(f.getDepartureDateTime()), f.getDestination(),
-                    hourdateFormat.format(f.getArrivalDateTime()), f.getStatus(), w.weatherconditions());
+            System.out.printf(headerTab, f.getSchedule().getFlightNumber(), f.getAircraft().getAirline(), f.getAircraft().getModel(), f.getOrigin(),
+                    hourdateFormat.format(f.getSchedule().getDepartureDateTime()), f.getDestination(),
+                    hourdateFormat.format(f.getSchedule().getArrivalDateTime()), f.getStatus(), w.weatherconditions());
         }
         System.out.printf(separatorLine + "\n");
     }
