@@ -3,9 +3,13 @@ package reports;
 import Interfaces.iReports.IcreateAndSaveExcel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import model.Flight;
+import model.FlightList;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -17,65 +21,63 @@ public class ExcelReport implements IcreateAndSaveExcel {
     @Override
     public void createAndSaveExcel() {
 
-        Workbook book = new XSSFWorkbook();
-        Sheet sheet = book.createSheet("Report");
-
-        CellStyle style = book.createCellStyle();
-        style.setAlignment(HorizontalAlignment.CENTER);
-        style.setVerticalAlignment(VerticalAlignment.CENTER);
-        Font font = book.createFont();
-        font.setFontName("Arial");
-        font.setBold(true);
-        font.setFontHeightInPoints((short) 9);
-        style.setFont(font);
-        //rtitle= row title
-        Row rtitle = sheet.createRow(0);
-        //ctitle= column
-        Cell ctitle = rtitle.createCell(5);
-        ctitle.setCellStyle(style);
-        ctitle.setCellValue("Airport Report");
-
-
-        String header = " Code, Aircraft , Airline , Country/City Origin , Hour/Date Departure ,  Country/City Destination , Hour/Date Arrival , Status , Weather Conditions";
-        String[] arrHeader= header.split(",");
-
-        Row rheader = sheet.createRow(2);
-
-        for(int i = 0; i< arrHeader.length; i++){
-            Cell cellTitle = rheader.createCell(i);
-            cellTitle.setCellStyle(style);
-            cellTitle.setCellValue(arrHeader[i]);
-        }
-        System.out.println("created");
-        /*
-        //la lista xd
-        Flight lista = new Flight();
-
-        int size =.get( arrHeader[0])).size();
-        for (int row =3;row<size; row++){
-
-            Row rowValue = sheet.createRow(row+1);
-            int cell =0;
-            for(int i=0; i<arrHeader.length;i++){
-                //la lista
-                List<String> report = (List<String>);
-                Cell cell0 = rowValue.createCell(cell);
-                cell0.setCellValue(report.get(row));
-                cell++;
-            }
-        }*/
+        File archivo = new File("flighlist.xlsx");
+        FileInputStream inputStream;
 
         try {
-            FileOutputStream fileout = new FileOutputStream("Report.xlsx");
-            book.write(fileout);
-            fileout.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            inputStream = new FileInputStream(archivo);
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            int rowCount = sheet.getLastRowNum();
+
+            for (Flight f : FlightList.getFlightList()) {
+                Row row = sheet.createRow(rowCount++);
+                for(int i=0; i< 1; i++){
+                    Cell cell = row.createCell(0);
+                    fillCells(cell, row, f);
+                }
+            }
+
+            inputStream.close();
+            FileOutputStream outputStream = new FileOutputStream("flighlist.xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
+        } catch (IOException | EncryptedDocumentException ex) {
+            ex.printStackTrace();
         }
-
-
     }
 
+    private void fillCells(Cell cell, Row row, Flight f){
+        cell.setCellValue(f.getSchedule().getFlightNumber());
 
+        cell = row.createCell(  1);
+        cell.setCellValue(f.getAircraft().getAirline());
 
+        cell = row.createCell(  2);
+        cell.setCellValue(f.getOrigin().getAirportName());
+
+        cell = row.createCell(  3);
+        cell.setCellValue(f.getOrigin().getCountryName() + "/" + f.getOrigin().getCityName());
+
+        cell = row.createCell(  4);
+        cell.setCellValue(f.getDestination().getAirportName());
+
+        cell = row.createCell(  5);
+        cell.setCellValue(f.getDestination().getCountryName() + "/" + f.getDestination().getCityName());
+
+        cell = row.createCell(  6);
+        cell.setCellValue(f.getSchedule().getDepartureDateTime().toString());
+
+        cell = row.createCell(  7);
+        cell.setCellValue(f.getSchedule().getArrivalDateTime().toString());
+
+        cell = row.createCell(  8);
+        cell.setCellValue(f.getStatus());
+
+        cell = row.createCell(  9);
+        cell.setCellValue(f.getAircraft().getModel());
+    }
 }

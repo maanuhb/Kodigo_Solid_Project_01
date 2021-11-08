@@ -1,24 +1,22 @@
+import helpers.Email;
+import reports.ReadExcel;
 import menus.Menu;
 import menus.MenuFlight;
 import reports.ExcelReport;
-import model.Flight;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         final String ANSI_BLUE = "\u001B[34m";
-        final List<Flight> flightList = new ArrayList<>();
         final Scanner sc = new Scanner(System.in);
 
         int op =0;
         do{
-            ExcelReport excel = new ExcelReport();
             Menu.printMainMenu();
             System.out.println(ANSI_BLUE + "Enter a number to select one of the menu options");
             op = sc.nextInt();
+            sc.nextLine();
             switch(op){
                 case 1: do{
                     Menu.printFlightMenu();
@@ -28,14 +26,21 @@ public class Main {
                 }while(op!=0);
                     break;
                 case 2:
+                    System.out.println("Enter the excel filename .xlsx");
+                    ReadExcel.read(sc.nextLine());
                     break;
                 case 3:
-                    excel.createAndSaveExcel();
+                    ExcelReport report = new ExcelReport();
+                    report.createAndSaveExcel();
                     break;
                 case 4:
+                    System.out.println("Type your email to send the report: ");
+                    String email = sc.nextLine();
+                    System.out.println("Type the filename .xlsx");
+                    String filename = sc.nextLine();
+                    Email.send(email, filename);
                     break;
                 case 5:
-
                     System.out.println("Bye!");
                     break;
                 default:

@@ -19,7 +19,7 @@ public class FlightManagement implements IEnterFlight, ICancelable, IUpdatable {
          }
       }
       FlightList.setFlightList(newFlight);
-      System.out.println("\n----Vuelo agregado exitosamente-----");
+      System.out.println("\n---- Flight successfully added -----");
    }
 
    @Override

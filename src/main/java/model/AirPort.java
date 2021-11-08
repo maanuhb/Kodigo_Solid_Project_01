@@ -1,14 +1,11 @@
 package model;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import model.Aircraft;
-import model.Location;
+import lombok.*;
 
 import java.util.ArrayList;
 @Getter
 @Setter
+@NoArgsConstructor
 public class AirPort extends Location {
     private String AirportName;
     private String AirportCode;
@@ -20,6 +17,7 @@ public class AirPort extends Location {
         this.AirportCode = AirportCode;
         this.catalogOfAircrafts = new ArrayList<>();
     }
+
 
     public void addAircraft(Aircraft aircraft) {
         this.catalogOfAircrafts.add(aircraft);

@@ -25,11 +25,11 @@ public class Menu {
         System.out.printf(spaces, LINE);
         System.out.printf(TAB,"", "1", "Manage Flights");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "2", "See Catalog of Allowed Aircraft");
+        System.out.printf(TAB,"", "2", "Upload an Excel Report");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "3", "Generate reports");
+        System.out.printf(TAB,"", "3", "Generate Reports");
         System.out.printf(spaces, LINE);
-        System.out.printf(TAB,"", "4", "Enviar Reporte por correo");
+        System.out.printf(TAB,"", "4", "Send Report by email");
         System.out.printf(spaces, LINE);
         System.out.printf(TAB,"", "5", "Leave");
         System.out.printf(spaces, LINE);
@@ -66,8 +66,8 @@ public class Menu {
         System.out.println(separatorLine);
         for(Flight f : FlightList.getFlightList()){
             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-            System.out.printf(headerTab, f.getSchedule().getFlightNumber(), f.getAircraft().getAirline(), f.getAircraft().getModel(), f.getOrigin(),
-                    hourdateFormat.format(f.getSchedule().getDepartureDateTime()), f.getDestination(),
+            System.out.printf(headerTab, f.getSchedule().getFlightNumber(), f.getAircraft().getAirline(), f.getAircraft().getModel(), f.getOrigin().getCountryName() + "/" + f.getOrigin().getCityName(),
+                    hourdateFormat.format(f.getSchedule().getDepartureDateTime()), f.getDestination().getCountryName() + "/" + f.getDestination().getCityName(),
                     hourdateFormat.format(f.getSchedule().getArrivalDateTime()), f.getStatus(), w.weatherconditions());
         }
         System.out.printf(separatorLine + "\n");

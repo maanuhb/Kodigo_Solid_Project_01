@@ -1,7 +1,9 @@
 package helpers;
 
+import reports.ReadExcel;
 import menus.Menu;
 import model.*;
+import reports.SearchExcel;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -16,18 +18,32 @@ public class RequestInfo {
     public static Flight requestFlight(){
         Flight f = new Flight();
         f.setIndex(FlightList.getFlightList().size());
+
+        //System.out.println("Press enter to continue:");
+        //sc.nextLine();
         System.out.println("Type the airline: ");
         Aircraft aircraft = new Aircraft();
         aircraft.setAirline(sc.nextLine());
+
+        FlightSchedule flightSchedule = new FlightSchedule();
+        flightSchedule.setFlightNumber(Generate.generateCode(aircraft.getAirline()));
+        f.setSchedule(flightSchedule);
+
+        System.out.println("Choose one aircraft: ");
+        ReadExcel.read("aircrafts.xlsx");
+        aircraft.setModel(sc.nextLine());
         f.setAircraft(aircraft);
 
-        System.out.println("Type the origin country: ");
-        //AirPort a = new AirPort();
-        // f.setOrigin();
+        System.out.println("Type the Airport Code of origin country: ");
+        ReadExcel.read("airports.xlsx");
+        AirPort airporta =  SearchExcel.searchAirport(sc.nextLine(), "airports.xlsx");
+        f.setOrigin(airporta);
 
 
-        System.out.println("Type the destination country");
-        //f.setDestination(/*flightList.get(sc.nextInt()).getDestination()*/sc.nextLine());
+        System.out.println("Type the Airport Code of destination country");
+        ReadExcel.read("airports.xlsx");
+        AirPort airportb =  SearchExcel.searchAirport(sc.nextLine(), "airports.xlsx");
+        f.setDestination(airportb);
 
         f.setStatus("On Time");
 
@@ -43,7 +59,6 @@ public class RequestInfo {
         String arrivalHour = sc.next();
 
         try {
-            FlightSchedule flightSchedule = new FlightSchedule();
             flightSchedule.setDepartureDateTime(hourdateFormat.parse(depHour + " " + depDate));
             flightSchedule.setArrivalDateTime(hourdateFormat.parse(arrivalHour + " " + arrivalDate));
             f.setSchedule(flightSchedule);
@@ -54,11 +69,12 @@ public class RequestInfo {
     }
 
     //Method to request the user by console what flight will be changed her status
-    public static void requestChangeState(List<Flight> flightList){
+    public static void requestChangeState(){
         System.out.println("Check the flight chart to update the status of any flight");
         Menu.printObjectList();
+        sc.nextLine();
         System.out.println("Enter the Flight Number to which you want to update your status");
-        Flight f = Find.findFlight(sc.nextLine(), flightList);
+        Flight f = Find.findFlight(sc.nextLine());
         System.out.println("Enter the new flight status");
         f.setStatus(sc.nextLine());
         if(f.getStatus().equals("Canceled")){
@@ -66,4 +82,6 @@ public class RequestInfo {
             //ENTER HERE THE REASON FOR CANCELING THE FLIGHT
         }
     }
+
+
 }
