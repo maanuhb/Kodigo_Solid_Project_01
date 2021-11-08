@@ -41,7 +41,9 @@ public class FlightManagement implements IEnterFlight, ICancelable, IUpdatable {
 
    public void changeStatus(String flightNumber, String status) {
       for (Flight flight : FlightList.getFlightList()) {
-         if (flight.getSchedule().getFlightNumber().equals(flightNumber)) {
+         if(flight.getArrivalDateTime().before(new Date())){
+            flight.setStatus("Arrived");
+         } else if (flight.getSchedule().getFlightNumber().equals(flightNumber)) {
             flight.setStatus(status);
          }
       }
