@@ -24,8 +24,8 @@ public class FacadeWeatherConditions {
         weather += windDirection[index];
     }
 
-    public String weatherconditions() {
-        FacadeWeatherCondition();
-        return weather;
+    public String getWeatherConditions() {
+        this.FacadeWeatherCondition();
+        return this.weather;
     }
 }
