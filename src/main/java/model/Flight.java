@@ -8,7 +8,6 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Flight{
     private String Status = "On time";
     private int index;

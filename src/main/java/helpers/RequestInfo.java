@@ -22,12 +22,14 @@ public class RequestInfo {
         f.setAircraft(aircraft);
 
         System.out.println("Type the origin country: ");
-        //AirPort a = new AirPort();
-        // f.setOrigin();
-
+        AirPort o = new AirPort();
+        o.setCountryName(sc.nextLine());
+        f.setOrigin(o);
 
         System.out.println("Type the destination country");
-        //f.setDestination(/*flightList.get(sc.nextInt()).getDestination()*/sc.nextLine());
+        AirPort d = new AirPort();
+        d.setCountryName(sc.nextLine());
+        f.setDestination(d);
 
         f.setStatus("On Time");
 

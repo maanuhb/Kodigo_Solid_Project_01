@@ -1,5 +1,6 @@
 package menus;
 
+import model.FacadeWeatherConditions;
 import model.Flight;
 import model.FlightList;
 import model.WeatherConditions;
@@ -58,7 +59,7 @@ public class Menu {
 
     //Method that will print the flights, it can go to an interface
     public static void printObjectList(){
-        WeatherConditions w= new WeatherConditions();
+        FacadeWeatherConditions w= new FacadeWeatherConditions();
 
         System.out.printf(separatorLine + "\n");
         System.out.printf( headerTab, " Code", "     Airline", "   Aircraft", " Country/City Origin", "    Hour/Date",
