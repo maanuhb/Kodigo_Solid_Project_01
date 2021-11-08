@@ -1,6 +1,7 @@
 package model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import model.Aircraft;
@@ -13,14 +14,6 @@ public class AirPort extends Location {
     private String AirportName;
     private String AirportCode;
     private ArrayList<Aircraft> catalogOfAircrafts;
-
-    public AirPort(@NonNull String CountryName, @NonNull String CountryCode, @NonNull String AirportName, @NonNull String AirportCode) {
-        super(CountryName, CountryCode);
-        this.AirportName = AirportName;
-        this.AirportCode = AirportCode;
-        this.catalogOfAircrafts = new ArrayList<>();
-    }
-
     public void addAircraft(Aircraft aircraft) {
         this.catalogOfAircrafts.add(aircraft);
     }
